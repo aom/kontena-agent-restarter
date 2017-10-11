@@ -1,0 +1,11 @@
+version: '2.1'
+
+services:
+  docker:
+    build: .
+    image: aarreoskari/kontena-agent-restarter:latest
+    container_name: docker-inside-docker
+    entrypoint: docker ps
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock:ro
+

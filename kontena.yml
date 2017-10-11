@@ -1,0 +1,23 @@
+stack: aom/kontena-agent-restarter
+description: Docker inside a docker uses host docker socket to restart kontena-agent every now and then
+
+variables:
+  affinity:
+    type: string
+    required: false
+    from:
+      prompt: Affinity rule
+
+services:
+  docker-client:
+    image: aarreoskari/kontena-agent-restarter:latest
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock:ro
+    affinity:
+      # {% if affinity %}
+      - {{ affinity }}
+      # {% endif %}
+    deploy:
+      strategy: daemon
+      interval: 1d
+
