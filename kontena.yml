@@ -1,4 +1,4 @@
-stack: aom/kontena-agent-restarter
+stack: mika/kontena-agent-restarter
 description: Docker inside a docker uses host docker socket to restart kontena-agent every now and then
 
 variables:
